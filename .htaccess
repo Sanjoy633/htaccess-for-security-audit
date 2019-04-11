@@ -1,0 +1,43 @@
+######################################################################
+## Word to the wise                                                 ##
+## It is best to keep your htaccess files as clean as possible      ##
+## and set as many specs in your Apache config as you can.          ##
+## Htaccess slows down Apache.                                      ##
+## Review the entire file before use, especially the TODO sections. ##
+######################################################################
+
+<IfModule mod_rewrite.c>
+#redirect HTTP to HTTPS
+RewriteEngine On
+RewriteCond %{HTTPS} !on
+RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+# Disable PUT,TRACE,OPTIONS,DELETE,CONNECT and other unwanted Method 
+# For Best practice do following in web server configuration file
+# try to avoid to write in .htaccess 
+RewriteCond %{REQUEST_METHOD} ^(TRACE|TRACK|PUT|OPTIONS|DELETE|HEAD|CONNECT)
+RewriteRule .*$ - [F,L]
+
+# Error Pages
+ErrorDocument 301 /errors/301.php
+ErrorDocument 302 /errors/302.php
+ErrorDocument 403 /errors/403.php
+ErrorDocument 404 /errors/404.php
+ErrorDocument 500 /errors/500.php
+ErrorDocument 502 /errors/502.php
+ErrorDocument 503 /errors/503.php
+
+</IfModule>
+
+
+# Extra Security Headers
+<IfModule mod_headers.c>
+Header set X-XSS-Protection "1; mode=block" 
+Header set X-Content-Type-Options "nosniff"
+Header set Content-Security-Policy "script-src 'self';"
+Header set Access-Control-Allow-Origin SAMEORIGIN
+Header set X-Download-Options noopen
+Header set X-Frame-Options Deny
+Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+
+</IfModule>
