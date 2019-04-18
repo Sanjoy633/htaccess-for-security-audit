@@ -11,7 +11,10 @@ The best way to prevent cross-site scripting is to make sure that the web applic
 
 **Solution:**
 
-Use the following function  htmlspecialchars() 
+Use the following function  
+```php
+htmlspecialchars() 
+```
 
 ## Directory Listing
 
@@ -26,9 +29,9 @@ Enable .htaccess (By default, .htaccess isn’t enable. To enable it you will ne
 
 Use a text editor to open your configuration file:
 
-
+```
 sudo vi /etc/apache2/sites-available/example.com.conf
-
+```
 
 After the VirtualHost block () add:
 
@@ -236,8 +239,6 @@ Implement all security headers. a2enmod headers to install and enable headers.
 
         
 # Extra Security Headers
-
-
 
 ```html
 
