@@ -271,7 +271,7 @@ Implement all security headers. a2enmod headers to install and enable headers.
 ```
 
 
-## Disable Compression
+## Disable HTTP Compression
 
 **Recommendation:**
 
@@ -281,18 +281,26 @@ To disable compression in Apache, typically you just need to disable the module 
 **Solution:**
 
 
-```html
+
 # Debian/Ubuntu:
+```python
 sudo a2dismod deflate
 sudo /etc/init.d/apache2 restart
-
+```
 # Red Hat or CentOS:
+```python
 sudo nano /etc/httpd/conf/httpd.conf
+```
 Comment out this line:
+```python
 LoadModule deflate_module modules/mod_deflate.so
+```
 It should now look like this:
+```python
 #LoadModule deflate_module modules/mod_deflate.so
+```
 Close and save the file then restart httpd:
+```python
 sudo /etc/init.d/httpd restart
 
 ```
