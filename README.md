@@ -271,3 +271,28 @@ Implement all security headers. a2enmod headers to install and enable headers.
 ```
 
 
+## Disable Compression
+
+**Recommendation:**
+
+To disable compression in Apache, typically you just need to disable the module mod_deflate. After making the below adjustments, test again with the above manual test to confirm compression is disabled.
+
+
+**Solution:**
+
+
+```html
+# Debian/Ubuntu:
+sudo a2dismod deflate
+sudo /etc/init.d/apache2 restart
+
+# Red Hat or CentOS:
+sudo nano /etc/httpd/conf/httpd.conf
+Comment out this line:
+LoadModule deflate_module modules/mod_deflate.so
+It should now look like this:
+#LoadModule deflate_module modules/mod_deflate.so
+Close and save the file then restart httpd:
+sudo /etc/init.d/httpd restart
+
+```
