@@ -281,13 +281,12 @@ To disable compression in Apache, typically you just need to disable the module 
 **Solution:**
 
 
-
-# Debian/Ubuntu:
+***Debian/Ubuntu:***
 ```python
 sudo a2dismod deflate
 sudo /etc/init.d/apache2 restart
 ```
-# Red Hat or CentOS:
+***Red Hat or CentOS:***
 ```python
 sudo nano /etc/httpd/conf/httpd.conf
 ```
