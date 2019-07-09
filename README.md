@@ -251,8 +251,7 @@ Implement all security headers. a2enmod headers to install and enable headers.
 	Header set X-Download-Options noopen
 	Header set X-Frame-Options Deny
 	Header set Cache-Control "private, max-age=0"
-	Header always edit Set-Cookie (.*) "$1; HTTPOnly;Secure"
-	Header always edit Set-Cookie (.*) "$1; Secure"
+	Header edit Set-Cookie ^(.*)$ $1;HttpOnly;Secure
 </IfModule>
 
 # Allow Cross-Domain Fonts
