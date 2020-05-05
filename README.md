@@ -246,7 +246,7 @@ Implement all security headers. a2enmod headers to install and enable headers.
 	Header set X-XSS-Protection "1; mode=block"
 	Header set X-Content-Type-Options "nosniff"
 	Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
-	Header set Content-Security-Policy "default-src 'self'; style-src 'self' 'unsafe-inline' *.googleapis.com data:; font-src 'self' *.gstatic.com;script-src 'self'  'unsafe-inline' 'unsafe-eval' *.jquery.com *.google-analytics.com *.googleapis.com data:; connect-src 'self' *.google-analytics.com *.googleapis.com *.gstatic.com data:;img-src * data:;"
+	Header set Content-Security-Policy "default-src 'self'; style-src 'self' 'unsafe-inline' *.googleapis.com data:; font-src 'self' *.gstatic.com data:;script-src 'self'  'unsafe-inline' 'unsafe-eval' *.jquery.com *.google-analytics.com *.googleapis.com data:; connect-src 'self' *.google-analytics.com *.googleapis.com *.gstatic.com data:;img-src * data:;"
 	Header set Access-Control-Allow-Origin SAMEORIGIN
 	Header set X-Download-Options noopen
 	Header set X-Frame-Options Deny
